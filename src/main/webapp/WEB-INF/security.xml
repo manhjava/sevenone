@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:beans="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+              http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <http pattern="/resources/images/**" security="none"/>
+    <http pattern="/resources/styles/**" security="none"/>
+    <http pattern="/resources/scripts/**" security="none"/>
+    
+    <http auto-config="true">
+    	<intercept-url pattern="/index*" access="ROLE_ANONYMOUS,ROLE_ADMIN,ROLE_USER"/>
+        <intercept-url pattern="/admin/**" access="ROLE_ADMIN"/>
+        <intercept-url pattern="/doibong/**" access="ROLE_ADMIN,ROLE_USER"/>
+        <intercept-url pattern="/my-account**" access="ROLE_ADMIN,ROLE_USER"/>
+        <intercept-url pattern="/passwordHint*" access="ROLE_ANONYMOUS,ROLE_ADMIN,ROLE_USER"/>
+        <intercept-url pattern="/requestRecoveryToken*" access="ROLE_ANONYMOUS,ROLE_ADMIN,ROLE_USER" />
+        <intercept-url pattern="/updatePassword*" access="ROLE_ANONYMOUS,ROLE_ADMIN,ROLE_USER" />
+        <intercept-url pattern="/all-players*" access="ROLE_ANONYMOUS,ROLE_ADMIN,ROLE_USER"/>
+        <intercept-url pattern="/all-teams*" access="ROLE_ANONYMOUS,ROLE_ADMIN,ROLE_USER"/>
+        <intercept-url pattern="/signup*" access="ROLE_ANONYMOUS,ROLE_ADMIN,ROLE_USER"/>
+        <intercept-url pattern="/auth/**" access="ROLE_ANONYMOUS,ROLE_ADMIN,ROLE_USER"/>
+        <intercept-url pattern="/login*" access="ROLE_ANONYMOUS,ROLE_ADMIN,ROLE_USER"/>
+        <intercept-url pattern="/**" access="ROLE_ADMIN,ROLE_USER"/>
+        <form-login login-page="/login.jsp" authentication-failure-url="/login.jsp?error=true" login-processing-url="/j_security_check"/>
+        <remember-me user-service-ref="userDetailsService" key="e37f4b31-0c45-11dd-bd0b-0800200c9a66"/>
+        <custom-filter ref="socialAuthenticationFilter" before="PRE_AUTH_FILTER" />
+    </http>
+    
+    <authentication-manager alias="authenticationManager">
+		<authentication-provider user-service-ref="userDetailsService">
+			<password-encoder ref="passwordEncoder" />
+		</authentication-provider>
+		
+		<!-- Spring Social Security authentication provider -->
+		<authentication-provider ref="socialAuthenticationProvider" />
+	</authentication-manager>
+    
+    <!-- <jdbc-user-service id="userDetailsService" 
+					data-source-ref="dataSource" 
+					users-by-username-query="select username, password, true from Account where username = ?"
+					authorities-by-username-query="select username, 'ROLE_USER' from Account where username = ?"/> -->
+					
+	<beans:bean id="textEncryptor" class="org.springframework.security.crypto.encrypt.Encryptors"
+		factory-method="noOpText" />
+		
+
+    <!-- Override the default password-encoder (BCrypt) by uncommenting the following and changing the class -->
+    <!-- <bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/> -->
+
+    <global-method-security>
+        <protect-pointcut expression="execution(* *..service.UserManager.getUsers(..))" access="ROLE_ADMIN"/>
+        <protect-pointcut expression="execution(* *..service.UserManager.removeUser(..))" access="ROLE_ADMIN"/>
+    </global-method-security>
+</beans:beans>

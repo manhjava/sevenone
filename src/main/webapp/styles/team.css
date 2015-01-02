@@ -1,0 +1,113 @@
+table {
+	margin-top: 0pt; 
+	font-size: 9pt; 
+	margin-bottom: 6pt; 
+	font-family: Verdana, sans-serif;
+	border-right: #000000 1pt solid; 
+	border-top: #000000 1pt solid; 
+	border-left: #000000 1pt solid; 
+	width: 100%; 
+	border-bottom: #000000 1pt solid; 
+	border-collapse: collapse;
+}
+th {
+	margin-top: 10pt; 
+	font-size: 9pt; 
+	margin-bottom: 6pt; 
+	font-family: Verdana, sans-serif;
+	border-right: #000000 1pt solid; 
+	padding-right: 5px; 
+	border-top: #000000 1pt solid; 
+	padding-left: 5px; 
+	font-weight: bold; 
+	padding-bottom: 10px; 
+	vertical-align: top; 
+	border-left: #000000 1pt solid; 
+	color: #000000; 
+	padding-top: 10px; 
+	border-bottom: #000000 1pt solid; 
+	white-space: nowrap; 
+	border-collapse: collapse; 
+	background-color: #99CC00; 
+	text-align: center
+}
+td {
+	margin-top: 10pt; 
+	font-size: 9pt; 
+	margin-bottom: 6pt; 
+	font-family: Verdana, sans-serif;
+	border-right: #000000 1pt solid; 
+	padding-right: 5px; 
+	border-top: #000000 1pt solid; 
+	padding-left: 5px; 
+	padding-bottom: 10px; 
+	vertical-align: top; 
+	border-left: #000000 1pt solid; 
+	padding-top: 10px; 
+	border-bottom: #000000 1pt solid; 
+	border-collapse: collapse; 
+	text-align: left
+}
+div.content {
+    solid 3px;
+    clear: left;
+    padding: 1em;
+}
+
+div.content.inactive {
+	display: none;
+	
+}
+
+.inactive {
+background-color: #9d9d9d;
+}
+
+ol#toc {
+    height: 2em;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ol#toc a {
+    color: #008;
+    display: block;
+    float: left;
+    height: 2em;
+    padding-left: 10px;
+    text-decoration: none;
+}
+
+ol#toc a:hover {
+    background-color: #3af;
+    background-position: 0 -120px;
+}
+
+ol#toc a:hover span {
+    background-position: 100% -120px;
+}
+
+ol#toc li {
+    float: left;
+    margin: 0 1px 0 0;
+}
+
+ol#toc li a.active {
+    background-color: #99CC00;
+    background-position: 0 -60px;
+    color: #fff;
+    font-weight: bold;
+}
+
+ol#toc li a.active span {
+    background-position: 100% -60px;
+}
+
+ol#toc span {
+    
+    display: block;
+    line-height: 2em;
+    padding-right: 10px;
+	width: 100px;
+}
