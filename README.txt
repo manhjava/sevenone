@@ -1,6 +1,6 @@
 AppFuse2 Basic Spring MVC Archetype
 --------------------------------------------------------------------------------
-If you're reading this then you've created your new project using Maven and
+If you're2 reading this then you've created your new project using Maven and
 myproject.  You have only created the shell of an AppFuse Java EE
 application.  The project object model (pom) is defined in the file pom.xml.
 The application is ready to run as a web application. The pom.xml file is
