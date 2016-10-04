@@ -1,4 +1,5 @@
 AppFuse2 Basic Spring MVC Archetype
+today is 4 oct 2016
 
 --------------------------------------------------------------------------------
 If you're2 reading this then you've created your new project using Maven and
